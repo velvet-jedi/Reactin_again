@@ -50,7 +50,7 @@ const Content = () => {
         <button onClick={(e) => handleClick3(e)}>Click it</button> */}
       <ul>
         {items.map((item) => (
-          <li className='item' style= { { listStyle: 'none' } }>
+          <li key={item.id} className='item' style= { { listStyle: 'none' } }>
             <input 
               type="checkbox"
               read={item.read} 
