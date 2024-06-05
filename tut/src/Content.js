@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import React from 'react'
+import {FaTrashAlt} from 'react-icons/fa'
+
 
 const Content = () => {
   // const [name, setName] = useState('John') // default state willbe John
@@ -56,7 +58,8 @@ const Content = () => {
               read={item.read} 
               />
               <label>{item.item}</label>
-              <button>Delete</button>
+              <FaTrashAlt role='button' tabIndex='0' />
+              
           </li>
         ))}
       </ul>
