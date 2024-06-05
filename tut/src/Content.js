@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import React from 'react'
 
 const Content = () => {
+  const [name, setName] = useState('John') // default state willbe John
 
     const handleNameChange = () => {
         const names = ['John', 'Jane', 'Dave'];
@@ -21,7 +23,9 @@ const Content = () => {
   return (
     <main>
         
-        <p onDoubleClick={handleClick}>Hello {handleNameChange()}</p>
+        <p onDoubleClick={handleClick}>Hello 
+        {/* {handleNameChange()}</p> */}
+        {name}</p>
         <button onClick={handleClick}>Click it</button>
         <button onClick={() => handleClick2('Dave')}>Click it</button>
         <button onClick={(e) => handleClick3(e)}>Click it</button>
