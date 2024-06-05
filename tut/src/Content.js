@@ -41,6 +41,13 @@ const Content = () => {
         }
       ]);
 
+      const handleCheck = (id) => {
+        const newList = items.map((item) => item.id === id ? {
+          ...item, read: !item.read
+        } : item);
+        setItems(newList); // set the new list to state
+      }
+
   return (
     <main>
         
@@ -55,6 +62,7 @@ const Content = () => {
           <li key={item.id} className='item' style= { { listStyle: 'none' } }>
             <input 
               type="checkbox"
+              onChange={() => handleCheck(item.id)} // kust like the key
               read={item.read} 
               />
               <label>{item.item}</label>
