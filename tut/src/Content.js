@@ -43,8 +43,8 @@ const Content = () => {
 
       const handleCheck = (id) => {
         const newList = items.map((item) => item.id === id ? {
-          ...item, read: !item.read
-        } : item);
+          ...item, read: !item.read // spread operator to create new object, but change the read property
+        } : item); // else keep the item unchanged
         setItems(newList); // set the new list to state
       }
 
