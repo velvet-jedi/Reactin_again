@@ -49,6 +49,14 @@ const Content = () => {
         localStorage.setItem('readingList', JSON.stringify(newList));
       }
 
+      const handleDelete = (id) =>{
+        const newList = items.filter((item) => 
+          item.id !== id
+        )
+        setItems(newList)
+        localStorage.setItem('readingList', JSON.stringify(newList));
+      }
+
   return (
     <main>
         
@@ -69,7 +77,7 @@ const Content = () => {
               <label
               style={(item.read) ? {textDecoration: 'line-through'} : null}
               >{item.item}</label>
-              <FaTrashAlt role='button' tabIndex='0' />
+              <FaTrashAlt onClick={() => handleDelete(item.id)} role='button' tabIndex='0' />
               
           </li>
         ))}
