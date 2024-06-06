@@ -66,7 +66,9 @@ const Content = () => {
               onChange={() => handleCheck(item.id)} // kust like the key
               read={item.read} 
               />
-              <label>{item.item}</label>
+              <label
+              style={(item.read) ? {textDecoration: 'line-through'} : null}
+              >{item.item}</label>
               <FaTrashAlt role='button' tabIndex='0' />
               
           </li>
