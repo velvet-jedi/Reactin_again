@@ -51,7 +51,7 @@ function App() {
         handleDelete={handleDelete}
         >
       </Content>  
-      <Footer></Footer>
+      <Footer length={items.length}></Footer>
     </div>
   );
 }
