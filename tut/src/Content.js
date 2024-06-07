@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import React from 'react'
-import {FaTrashAlt} from 'react-icons/fa'
+// import {FaTrashAlt} from 'react-icons/fa'
+import ItemList from './ItemList';
 
 
 const Content = ({ items, handleCheck, handleDelete }) => {
@@ -68,22 +69,24 @@ const Content = ({ items, handleCheck, handleDelete }) => {
         <button onClick={() => handleClick2('Dave')}>Click it</button>
         <button onClick={(e) => handleClick3(e)}>Click it</button> */}
       {items.length ? (
-        <ul>
-          {items.map((item) => (
-            <li key={item.id} className='item' style= { { listStyle: 'none' } }>
-              <input 
-                type="checkbox"
-                onChange={() => handleCheck(item.id)} // kust like the key
-                read={item.read} 
-                />
-                <label
-                style={(item.read) ? {textDecoration: 'line-through'} : null}
-                >{item.item}</label>
-                <FaTrashAlt onClick={() => handleDelete(item.id)} role='button' tabIndex='0' />
+        <ItemList items={items} handleCheck={handleCheck} handleDelete={handleDelete} />
+        // <ul>
+        //   {items.map((item) => (
+        //     <li key={item.id} className='item' style= { { listStyle: 'none' } }>
+        //       <input 
+        //         type="checkbox"
+        //         onChange={() => handleCheck(item.id)} // kust like the key
+        //         read={item.read} 
+        //         />
+        //         <label
+        //         style={(item.read) ? {textDecoration: 'line-through'} : null}
+        //         >{item.item}</label>
+        //         <FaTrashAlt onClick={() => handleDelete(item.id)} role='button' tabIndex='0' />
                 
-            </li>
-          ))}
-        </ul>
+        //     </li>
+        //   ))}
+        // </ul>
+        
         ): (
           <p>No Books</p>
         )}
