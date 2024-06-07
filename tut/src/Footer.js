@@ -8,7 +8,7 @@ const Footer = ({length}) => {
     <footer>
         <p>{length} shelf {length === 1 ? 'book' : 'books'}</p>
         <p>Copyright &copy; {today.getFullYear()}</p>
-    </footer>
+    </footer> 
   )
 }
 
