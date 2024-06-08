@@ -2,7 +2,7 @@
 import React from 'react'
 import { FaPlus } from 'react-icons/fa'
 
-const AddItem = () => {
+const AddItem = ({ newItem, setNewItem, handleSubmit }) => {
   return (
     <form className='addForm'>
         <label htmlFor="addItem">Add a new book</label>
@@ -12,6 +12,8 @@ const AddItem = () => {
             autoFocus
             placeholder='Add item'
             required    /**dont let ths user submit the form without this input basically dont let the user add a new item withput fillin ghte input */
+            value={newItem} // set the value of the input to the state (our one source of truth)
+            onChange={(e) => setNewItem(e.target.value)}
         />
         <button 
             type='submit'

@@ -25,6 +25,14 @@ function App() {
     }
   ]);
 
+  // default 
+  const [newItem, setNewItem] = useState('');
+
+  //  for new addition submission
+  const handleSubmit = (e) => {
+    console.log('submitted')
+  }
+
   const handleCheck = (id) => {
     const newList = items.map((item) => item.id === id ? {
       ...item, read: !item.read // spread operator to create new object, but change the read property
@@ -45,7 +53,11 @@ function App() {
     <div className="App">
               {/* prop */}
       <Header title="Books"></Header>
-      <AddItem />
+      <AddItem 
+        newItem={newItem}
+        setNewItem={setNewItem}
+        handleSubmit={handleSubmit}
+      />
       <Content 
         items={items} 
         // setItems={setItems}
