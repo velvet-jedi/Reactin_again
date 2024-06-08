@@ -7,23 +7,25 @@ import { useState } from 'react';
 
 
 function App() {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      read: false,
-      item: 'Gravity'
-    },
-    {
-      id: 2,
-      read: false,
-      item: 'Telescopes'
-    },
-    {
-      id: 3,
-      read: false,
-      item: 'Electromagnetism'
-    }
-  ]);
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem('readingList')) // get items from local storage
+  //   [
+  //     {
+  //     id: 1,
+  //     read: false,
+  //     item: 'Gravity'
+  //   },
+  //   {
+  //     id: 2,
+  //     read: false,
+  //     item: 'Telescopes'
+  //   },
+  //   {
+  //     id: 3,
+  //     read: false,
+  //     item: 'Electromagnetism'
+  //   }
+  // ]
+);
 
   // default 
   const [newItem, setNewItem] = useState('');
