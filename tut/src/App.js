@@ -3,11 +3,13 @@ import Header from './Header';
 import AddItem from './AddItem';
 import Content from './Content';
 import Footer from './Footer';
+import SearchItem from './SearchItem';
 import { useState } from 'react';
 
 
 function App() {
   const [items, setItems] = useState(JSON.parse(localStorage.getItem('readingList')) // get items from local storage
+  
   //   [
   //     {
   //     id: 1,
@@ -29,6 +31,9 @@ function App() {
 
   // default 
   const [newItem, setNewItem] = useState('');
+
+  const [search, setSearch] = useState(''); 
+
 
   const setAndSaveItems = (newItems) => {
     setItems(newItems);
@@ -75,6 +80,10 @@ function App() {
     <div className="App">
               {/* prop */}
       <Header title="Books"></Header>
+      <SearchItem
+        search={search}
+        setSearch={setSearch}
+      />
       <AddItem 
         newItem={newItem}
         setNewItem={setNewItem}
