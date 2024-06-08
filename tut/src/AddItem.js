@@ -18,7 +18,7 @@ const AddItem = () => {
             aria-label='Add Item'
         >
             <FaPlus />
-        </button>
+        </button> 
     </form>
   )
 }
