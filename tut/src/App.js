@@ -28,25 +28,45 @@ function App() {
   // default 
   const [newItem, setNewItem] = useState('');
 
+  const setAndSaveItems = (newItems) => {
+    setItems(newItems);
+    localStorage.setItem('readingList', JSON.stringify(newItems));
+  }
+
+  const addItem = (item) => {
+    const id = items.length ? items[items.length - 1].id + 1 : 1;
+
+    const myNewItem = {
+      id: id,
+      read: false,
+      item: item
+    }
+    const newList = [...items, myNewItem]; // spread operator
+    setAndSaveItems(newList);
+
+  }
   //  for new addition submission
   const handleSubmit = (e) => {
-    console.log('submitted')
+    e.preventDefault(); // stop the page reload on subbmit
+    if (!newItem) return; // if the input is empty don't do anything and get out of this funciton
+    
+    addItem(newItem);
+    setNewItem('');
   }
 
   const handleCheck = (id) => {
     const newList = items.map((item) => item.id === id ? {
       ...item, read: !item.read // spread operator to create new object, but change the read property
     } : item); // else keep the item unchanged
-    setItems(newList); // set the new list to state
-    localStorage.setItem('readingList', JSON.stringify(newList));
+
+    setAndSaveItems(newList);
   }
 
   const handleDelete = (id) =>{
     const newList = items.filter((item) => 
       item.id !== id
     )
-    setItems(newList)
-    localStorage.setItem('readingList', JSON.stringify(newList));
+    setAndSaveItems(newList);
   }
 
   return (
