@@ -111,6 +111,7 @@ ul{
 }
 
 .addForm {
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   margin: 0.5rem 0 0 ;
@@ -128,6 +129,7 @@ ul{
  padding: 0.25rem;
  min-height: 48px;
  margin-right: 0.25rem;
+ border-radius: 0.25rem;
  font-size: 1rem;
  outline: none;
 }
@@ -148,4 +150,31 @@ button:hover {
   color: aliceblue;
   background-color: green;
   outline: none;
+}
+
+
+.searchForm {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0.25rem 0 0 ;
+  padding: 0 0.5rem 0.25rem;
+  border-radius: 0.25rem;
+
+}
+
+.searchForm label {
+  position: absolute;
+  left: -99999px;
+}
+
+.searchForm input[type="text"]{
+ flex-grow: 1;  /*every child will set to an equal size inside the container*/
+ max-width: 100%;
+ padding: 0.25rem;
+ min-height: 48px;
+ margin-right: 0.25rem;
+ font-size: 1rem;
+ border-radius: 0.25rem;
+ outline: none;
 }
