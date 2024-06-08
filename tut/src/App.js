@@ -1,5 +1,6 @@
 // import './App.css';
 import Header from './Header';
+import AddItem from './AddItem';
 import Content from './Content';
 import Footer from './Footer';
 import { useState } from 'react';
@@ -43,7 +44,8 @@ function App() {
   return (
     <div className="App">
               {/* prop */}
-      <Header title="Books"></Header>    
+      <Header title="Books"></Header>
+      <AddItem />
       <Content 
         items={items} 
         // setItems={setItems}
