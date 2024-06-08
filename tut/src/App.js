@@ -80,14 +80,15 @@ function App() {
     <div className="App">
               {/* prop */}
       <Header title="Books"></Header>
-      <SearchItem
-        search={search}
-        setSearch={setSearch}
-      />
+      
       <AddItem 
         newItem={newItem}
         setNewItem={setNewItem}
         handleSubmit={handleSubmit}
+      />
+      <SearchItem
+        search={search}
+        setSearch={setSearch}
       />
       <Content 
         items={items} 
