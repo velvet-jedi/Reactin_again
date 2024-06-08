@@ -109,3 +109,43 @@ ul{
   color: crimson;
   outline: none;
 }
+
+.addForm {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0.5rem 0 0 ;
+  padding: 0 0.5rem 0.25rem;
+}
+
+.addForm label {
+  position: absolute;
+  left: -99999px;
+}
+
+.addForm input[type="text"]{
+ flex-grow: 1;  /*every child will set to an equal size inside the container*/
+ max-width: calc(100% - 50px);
+ padding: 0.25rem;
+ min-height: 48px;
+ margin-right: 0.25rem;
+ font-size: 1rem;
+ outline: none;
+}
+
+button {
+  height: 48px;
+  min-width: 48px;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  color: mediumblue;
+  background-color: aliceblue;
+}
+
+button:focus,
+button:hover {
+  color: aliceblue;
+  background-color: green;
+  outline: none;
+}
