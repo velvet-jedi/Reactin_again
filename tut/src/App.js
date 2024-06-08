@@ -91,7 +91,10 @@ function App() {
         setSearch={setSearch}
       />
       <Content 
-        items={items} 
+      //  if search empty no filteration
+      // set evverything to lowercase so to match
+        items={items.filter(item => ((item.item).toLowerCase()).includes(search.toLowerCase()))} 
+        // MIND that we are not setting or saving the state just searching, equating the items to this wont change the state of items, it's just a variable reassignment
         // setItems={setItems}
         handleCheck={handleCheck}
         handleDelete={handleDelete}
