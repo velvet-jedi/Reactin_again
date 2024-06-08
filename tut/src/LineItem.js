@@ -12,7 +12,7 @@ const LineItem = ( { item, handleCheck, handleDelete } ) => {
               <input 
                 type="checkbox"
                 onChange={() => handleCheck(item.id)} // kust like the key
-                read={item.read} 
+                checked={item.read} 
                 />
                 <label
                 style={(item.read) ? {textDecoration: 'line-through'} : null}
