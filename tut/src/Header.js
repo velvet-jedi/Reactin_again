@@ -1,7 +1,7 @@
 import React from 'react'
 
 // const Header = (props) => {
-  const Header = ({title}) => {
+  const Header = ({title='Default Title' }) => {
 
     // const headerStyle = {        
     //         backgroundColor: 'royalblue',
