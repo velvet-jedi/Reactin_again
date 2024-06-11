@@ -4,11 +4,11 @@ import AddItem from './AddItem';
 import Content from './Content';
 import Footer from './Footer';
 import SearchItem from './SearchItem';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 function App() {
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem('readingList')) // get items from local storage
+  const [items, setItems] = useState([]); // get items from local storage
   
   //   [
   //     {
@@ -27,13 +27,18 @@ function App() {
   //     item: 'Electromagnetism'
   //   }
   // ]
-);
+
+;
 
   // default 
   const [newItem, setNewItem] = useState('');
 
   const [search, setSearch] = useState(''); 
 
+  
+  useEffect(() => {
+    setItems(JSON.parse(localStorage.getItem('readingList')))
+  }, [])  // set the items state on load time.
 
   const setAndSaveItems = (newItems) => {
     setItems(newItems);
