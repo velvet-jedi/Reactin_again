@@ -37,13 +37,9 @@ function App() {
 
   
   useEffect(() => {
-    setItems(JSON.parse(localStorage.getItem('readingList')))
-  }, [])  // set the items state on load time.
+    localStorage.setItem('readingList', JSON.stringify(items));
+  }, [items])   // real time change saved to local storage
 
-  const setAndSaveItems = (newItems) => {
-    setItems(newItems);
-    localStorage.setItem('readingList', JSON.stringify(newItems));
-  }
 
   const addItem = (item) => {
     const id = items.length ? items[items.length - 1].id + 1 : 1;
@@ -54,8 +50,8 @@ function App() {
       item: item
     }
     const newList = [...items, myNewItem]; // spread operator
-    setAndSaveItems(newList);
-
+    setItems(newList);
+    
   }
   //  for new addition submission
   const handleSubmit = (e) => {
@@ -71,14 +67,14 @@ function App() {
       ...item, read: !item.read // spread operator to create new object, but change the read property
     } : item); // else keep the item unchanged
 
-    setAndSaveItems(newList);
+    setItems(newList);
   }
 
   const handleDelete = (id) =>{
     const newList = items.filter((item) => 
       item.id !== id
     )
-    setAndSaveItems(newList);
+    setItems(newList);
   }
 
   return (
