@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import React from 'react'
 // import {FaTrashAlt} from 'react-icons/fa'
 import ItemList from './ItemList';
@@ -59,7 +59,7 @@ const Content = ({ items, handleCheck, handleDelete }) => {
       // }
 
   return (
-    <main>
+    <>
       
         
         {/* <p onDoubleClick={handleClick}>Hello  */}
@@ -90,7 +90,7 @@ const Content = ({ items, handleCheck, handleDelete }) => {
         ): (
           <p>No Books</p>
         )}
-    </main>
+    </>
   )
 }
 

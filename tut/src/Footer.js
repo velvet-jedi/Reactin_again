@@ -6,7 +6,7 @@ const Footer = ({length}) => {
 
   return (
     <footer>
-        <p>{length} shelf {length === 1 ? 'book' : 'books'}</p>
+        <p>{length} {length === 1 ? 'book' : 'books'} on the shelf</p>
         <p>Copyright &copy; {today.getFullYear()}</p>
     </footer> 
   )
