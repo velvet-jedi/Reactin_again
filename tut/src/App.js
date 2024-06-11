@@ -94,7 +94,7 @@ function App() {
     setNewItem("");
   };
 
-  const handleCheck = (id) => {
+  const handleCheck = async (id) => {
     const newList = items.map((item) =>
       item.id === id
         ? {
@@ -105,7 +105,21 @@ function App() {
     ); // else keep the item unchanged
 
     setItems(newList);
+    const myItem = newList.filter((item) => item.id === id) // define the item who got read toggled
+    // the only updating ou can do to an item is toggling the checkbox
+    const updateOptions = {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      read : myItem[0].read
+    })
   };
+  const reqUrl = `${API_URL}/${id}`;
+  const result = await apiRequest(reqUrl, updateOptions);
+  if (result) setFetchError(result);
+}
 
   const handleDelete = (id) => {
     const newList = items.filter((item) => item.id !== id);
