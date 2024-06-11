@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 
 
 function App() {
-  const API_URL = 'http://localhost:3500/items';
+  const API_URL = 'http://localhost:3500/itemss';
   // const [items, setItems] = useState(JSON.parse(localStorage.getItem('readingList')) || []); // get items from local storage
 
   const [items, setItems] = useState([]); // initially set this items state to be an empty array
@@ -44,14 +44,19 @@ function App() {
   //   localStorage.setItem('readingList', JSON.stringify(items));
   // }, [items])   // real time change saved to local storage
 
+  const [fetchError, setFetchError] = useState(null);
+
   useEffect(() => {
     const fetchItems = async () => {
       try {
         const response = await fetch(API_URL); // get the response
+        if(!response.ok) throw Error('Did not recieve expected data');
         const listItems = await response.json();  // parse the response
         setItems(listItems); // set the state to what we recieved from the API
+        setFetchError(null)
       } catch (error) {
-        console.log(error)
+        console.log(error.message)
+        setFetchError(error.message)
       }
     };
     fetchItems()
