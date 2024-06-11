@@ -41,6 +41,8 @@ function App() {
 
   const [fetchError, setFetchError] = useState(null);
 
+  const [isLoading, setIsLoading] = useState(true); // if the app loads for the fist time it by default is loading true
+
   useEffect(() => {
     const fetchItems = async () => {
       try {
@@ -52,9 +54,13 @@ function App() {
       } catch (error) {
         console.log(error.message);
         setFetchError(error.message);
+      } finally {
+        setIsLoading(false); // when the try block exits
       }
     };
-    fetchItems();
+    setTimeout(() => {
+      (async () => await fetchItems())();
+    }, 2000);
   }, []); // only happens at load time
 
   const addItem = (item) => {
@@ -108,7 +114,8 @@ function App() {
       <SearchItem search={search} setSearch={setSearch} />
 
       <main>
-        {fetchError && (
+        {isLoading && <p>Loading ...</p>}
+        {fetchError && !isLoading(
           <p
             style={{
               color: "red",
