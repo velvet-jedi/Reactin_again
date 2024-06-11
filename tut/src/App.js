@@ -5,6 +5,7 @@ import Content from "./Content";
 import Footer from "./Footer";
 import SearchItem from "./SearchItem";
 import { useState, useEffect } from "react";
+import apiRequest from "./apiRequest";
 
 function App() {
   const API_URL = "http://localhost:3500/items";
@@ -43,6 +44,7 @@ function App() {
 
   const [isLoading, setIsLoading] = useState(true); // if the app loads for the fist time it by default is loading true
 
+  // read
   useEffect(() => {
     const fetchItems = async () => {
       try {
@@ -63,7 +65,7 @@ function App() {
     }, 2000);
   }, []); // only happens at load time
 
-  const addItem = (item) => {
+  const addItem = async (item) => {
     const id = items.length ? items[items.length - 1].id + 1 : 1;
 
     const myNewItem = {
@@ -73,6 +75,15 @@ function App() {
     };
     const newList = [...items, myNewItem]; // spread operator
     setItems(newList);
+    const postOptions = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(myNewItem)
+    }
+    const result = await apiRequest(API_URL, postOptions);
+    if (result) setFetchError(result)
   };
   //  for new addition submission
   const handleSubmit = (e) => {
