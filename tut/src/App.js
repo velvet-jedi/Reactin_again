@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 
 
 function App() {
-  const [items, setItems] = useState([]); // get items from local storage
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem('readingList')) || []); // get items from local storage
   
   //   [
   //     {
