@@ -107,7 +107,7 @@ function App() {
     setItems(newList);
     const myItem = newList.filter((item) => item.id === id) // define the item who got read toggled
     // the only updating ou can do to an item is toggling the checkbox
-    const updateOptions = {
+    const updateOptions = { 
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json'
