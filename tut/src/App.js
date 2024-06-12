@@ -51,6 +51,7 @@ function App() {
         const response = await fetch(API_URL); // get the response
         if (!response.ok) throw Error("Did not recieve expected data");
         const listItems = await response.json(); // parse the response
+        
         setItems(listItems); // set the state to what we recieved from the API
         setFetchError(null);
       } catch (error) {
@@ -66,7 +67,8 @@ function App() {
   }, []); // only happens at load time
 
   const addItem = async (item) => {
-    const id = items.length ? items[items.length - 1].id + 1 : 1;
+
+    const id = items.length ? String(Number(items[items.length - 1].id) + 1) : 1;
 
     const myNewItem = {
       id: id,
@@ -121,9 +123,15 @@ function App() {
   if (result) setFetchError(result);
 }
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     const newList = items.filter((item) => item.id !== id);
     setItems(newList);
+    const deleteOptions = {
+      method: 'Delete', // since we not sending any resource to the server
+    }
+    const reqUrl = `${API_URL}/${id}`;
+    const result = await apiRequest(reqUrl, deleteOptions);
+    if (result) setFetchError(result);
   };
 
   return (
@@ -140,16 +148,16 @@ function App() {
 
       <main>
         {isLoading && <p>Loading ...</p>}
-        {fetchError && !isLoading(
+        {fetchError && 
           <p
             style={{
               color: "red",
               fontWeight: "bold",
             }}
           >{`Error: ${fetchError}`}</p>
-        )}
+        }
 
-        {!fetchError && (
+        {!fetchError && !isLoading && (
           <Content
             //  if search empty no filteration
             // set evverything to lowercase so to match
